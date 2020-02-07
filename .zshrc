@@ -83,6 +83,8 @@ plugins=(
     #zsh-autosuggestions
     command-not-found 
     sudo 
+    zsh-completions 
+    up 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,6 +130,7 @@ autoload -Uz _zinit
 #source /home/kreimben/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh-autopair/autopair.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
