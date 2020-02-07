@@ -28,7 +28,7 @@ set backupcopy=yes " Overwrite the original backup file
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++14'
 
-colorscheme darkblue
+"colorscheme darkblue
 
 " For Vundle!!!!!
 
@@ -50,7 +50,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic' " Grammar checker
-Plugin 'godlygeek/tabular'
+"Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'valloric/youcompleteme'
 
@@ -58,3 +58,5 @@ call vundle#end() " required
 filetype plugin indent on " required
 
 syntax on " 문법 하이라이트 킴
+
+let g:ycm_use_clangd = 0
