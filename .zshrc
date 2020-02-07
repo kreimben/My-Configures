@@ -77,10 +77,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git 
-    #autojump 
+    autojump 
     osx 
-    #zsh-syntax-highlighting 
-    #zsh-autosuggestions
+    zsh-syntax-highlighting 
+    zsh-autosuggestions
     command-not-found 
     sudo 
     zsh-completions 
@@ -126,11 +126,12 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
 ### End of Zinit installer's chunk
-#source /home/kreimben/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.zsh-autopair/autopair.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -138,6 +139,3 @@ source ~/.zsh-autopair/autopair.zsh
 zinit load zsh-users/zsh-autosuggestions
 zinit load zdharma/fast-syntax-highlighting
 
-#eval $(thefuck --alias)
-
-eval $(thefuck --alias FUCK)
