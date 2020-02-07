@@ -81,6 +81,8 @@ plugins=(
     osx 
     #zsh-syntax-highlighting 
     #zsh-autosuggestions
+    command-not-found 
+    sudo 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -132,3 +134,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 zinit load zsh-users/zsh-autosuggestions
 zinit load zdharma/fast-syntax-highlighting
+
+#eval $(thefuck --alias)
+
+eval $(thefuck --alias FUCK)
