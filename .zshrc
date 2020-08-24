@@ -77,6 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git 
+    zsh-hangul
     autojump 
     osx 
     zsh-syntax-highlighting 
@@ -139,3 +140,5 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 zinit load zsh-users/zsh-autosuggestions
 zinit load zdharma/fast-syntax-highlighting
 
+
+eval $(thefuck --alias)
