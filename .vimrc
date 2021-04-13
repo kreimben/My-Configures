@@ -25,9 +25,6 @@ set visualbell "beep 대신에 visual bell 사용
 set wildmenu " 자동완성을 도와줌
 set backupcopy=yes " Overwrite the original backup file
 
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++14'
-
 "colorscheme darkblue
 
 " For Vundle!!!!!
@@ -43,20 +40,43 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-"Plugin 'AutoComplPop'
 Plugin 'taglist.vim'
 Plugin 'SrcExpl'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic' " Grammar checker
-"Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'valloric/youcompleteme'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'mattn/vim-lsp-settings'
 
 call vundle#end() " required
 filetype plugin indent on " required
 
 syntax on " 문법 하이라이트 킴
 
-let g:ycm_use_clangd = 0
+" Settings for Asnycomplete.vim
+" Tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+" Force refresh completion
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+" Set NERDTree shortcuts
+" Open NERDTree
+nnoremap <S-Tab> :NERDTreeToggle<CR>
+" Find
+nnoremap <S-F> :NERDTreeFind<CR>
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * silent NERDTreeMirror
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
