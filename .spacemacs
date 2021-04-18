@@ -92,14 +92,14 @@ This function should only modify configuration layer settings."
      json
      react
      (javascript :variable js2-mode-show-strict-warnings nil
-                 javascript-fmt-tool 'prettier
+                 ;; javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t
                  javascript-backend 'lsp
                  javascript-import-tool 'import-js)
      (typescript :variable
                  typescript-fmt-on-save 't
-                 typescript-fmt-tool 'prettier
-                 typescript-linter 'eslinter
+                 ;; typescript-fmt-tool 'prettier
+                 typescript-linter 'eslint
                  typescript-backend 'lsp
                  )
      import-js
@@ -675,7 +675,13 @@ dump.")
   (spacemacs/toggle-syntax-highlighting-on)
   (spacemacs/toggle-truncate-lines-on)
 
-  ;; (global-company-mode)
+  ;; web-mode
+  (setq-default
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-value-indent-offset 2
+   )
 
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
