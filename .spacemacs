@@ -20,7 +20,7 @@ This function should only modify configuration layer settings."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'nil ;;'unused
+   dotspacemacs-enable-lazy-installation 'unused
 
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
@@ -40,49 +40,31 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
 
      (ivy :variable
-          ivy-enable-advanced-buffer-information t
+          ;; ivy-enable-advanced-buffer-information t
           )
-     (auto-completion :variable
-                      auto-completion-return-key-behavior 'nil
-                      auto-completion-tab-key-behavior 'complete
-                      auto-completion-complete-with-key-sequence t
-                      auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-help-tooltip t
-                      auto-completion-use-company-box t
-                      auto-completion-enable-sort-by-usage t
-                      :enabled-for
-                      vue
-                      typescript
-                      :disabled-for
-                      )
-     (syntax-checking :variable
-                      syntax-checking-enable-by-default t
-                      syntax-checking-enable-tooltips t)
-     (spell-checking :variable
-                     spell-checking-enable-auto-dictionary t
-                     spell-checking-enable-by-default t)
      helpful
      git
-     version-control
      markdown
      unicode-fonts
-     games
      emoji
      themes-megapack
-     spell-checking
 
      spacemacs-defaults
-     spacemacs-evil
      spacemacs-editing
      spacemacs-editing-visual
-     spacemacs-layouts
+     spacemacs-evil
      spacemacs-misc
      spacemacs-modeline
      spacemacs-navigation
-     spacemacs-project
-     spacemacs-purpose
+     spacemacs-visual
 
-     (lsp :variable lsp-code-lens-enable t)
+     (lsp :variable
+          lsp-use-lsp-ui t
+          lsp-ui-doc-enable t
+          lsp-ui-sideline-show-symbol t
+          lsp-ui-sideline-show-hover t
+          lsp-lens-enable t
+          )
 
      emacs-lisp
      (vue :variables
@@ -91,15 +73,17 @@ This function should only modify configuration layer settings."
      html
      json
      react
-     (javascript :variable js2-mode-show-strict-warnings nil
+     (javascript :variable
+                 js2-mode-show-strict-warnings nil
                  ;; javascript-fmt-tool 'prettier
-                 javascript-fmt-on-save t
+                 ;; javascript-fmt-on-save t
                  javascript-backend 'lsp
-                 javascript-import-tool 'import-js)
+                 javascript-import-tool 'import-js
+                 )
      (typescript :variable
                  typescript-fmt-on-save 't
                  ;; typescript-fmt-tool 'prettier
-                 typescript-linter 'eslint
+                 ;; typescript-linter 'eslint
                  typescript-backend 'lsp
                  )
      import-js
@@ -107,9 +91,7 @@ This function should only modify configuration layer settings."
             c-c++-backend: 'lsp-clangd
             c-c++-dap-adapters: 'dap-lldb
             c-c++-default-mode-for-headers: 'c++-mode
-            c-c++-enable-clang-format-on-save t
-            c-c++-enable-auto-newline nil
-            c-c++-adopt-subprojects 't
+            c-c++-adopt-subprojects t
             )
      go
      python
@@ -118,15 +100,18 @@ This function should only modify configuration layer settings."
      (neotree :variable
               neo-vc-integration '(face char)
               neo-autorefresh t
-              neo-theme nerd 
+              ;; neo-theme 'nerd
               )
-     docker
+     (docker :variable
+             docker-dockerfile-backend 'lsp
+             )
      (cmake :variables
+            cmake-enable-cmake-ide-support t
             cmake-backend 'lsp)
      (xclipboard :variables xclipboard-enable-cliphist t)
      (shell :variables
             shell-default-height 40
-            shell-default-shell 'multi-term
+            shell-default-shell 'eshell
             shell-default-term-shell "/bin/zsh"
             shell-default-position 'bottom)
 
@@ -315,7 +300,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("D2Coding"
-                               :size 16
+                               :size 20
                                :weight normal
                                :width normal)
 
@@ -592,58 +577,7 @@ variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
-
-;; This code is from (https://gist.github.com/synic/0357fdc2dcc777d89d1e)
-(defun save-framegeometry ()
-  "Gets the current frame's geometry and saves to ~/.emacs.d/framegeometry."
-  (let (
-        (framegeometry-left (frame-parameter (selected-frame) 'left))
-        (framegeometry-top (frame-parameter (selected-frame) 'top))
-        (framegeometry-width (frame-parameter (selected-frame) 'width))
-        (framegeometry-height (frame-parameter (selected-frame) 'height))
-        (framegeometry-file (expand-file-name "~/.emacs.d/framegeometry"))
-        )
-
-    (when (not (number-or-marker-p framegeometry-left))
-      (setq framegeometry-left 0))
-    (when (not (number-or-marker-p framegeometry-top))
-      (setq framegeometry-top 0))
-    (when (not (number-or-marker-p framegeometry-width))
-      (setq framegeometry-width 0))
-    (when (not (number-or-marker-p framegeometry-height))
-      (setq framegeometry-height 0))
-
-    (with-temp-buffer
-      (insert
-       ";;; This is the previous emacs frame's geometry.\n"
-       ";;; Last generated " (current-time-string) ".\n"
-       "(setq initial-frame-alist\n"
-       "      '(\n"
-       (format "        (top . %d)\n" (max framegeometry-top 0))
-       (format "        (left . %d)\n" (max framegeometry-left 0))
-       (format "        (width . %d)\n" (max framegeometry-width 0))
-       (format "        (height . %d)))\n" (max framegeometry-height 0)))
-      (when (file-writable-p framegeometry-file)
-        (write-file framegeometry-file))))
-  )
-
-(defun load-framegeometry ()
-  "Loads ~/.emacs.d/framegeometry which should load the previous frame's
-geometry."
-  (let ((framegeometry-file (expand-file-name "~/.emacs.d/framegeometry")))
-    (when (file-readable-p framegeometry-file)
-      (load-file framegeometry-file)))
-  )
-
-
 (defun dotspacemacs/user-init ()
-
-  (if window-system
-      (progn
-        (add-hook 'after-init-hook 'load-framegeometry)
-        (add-hook 'kill-emacs-hook 'save-framegeometry))
-    )
-
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
@@ -661,27 +595,42 @@ dump.")
 (defun dotspacemacs/user-config ()
 
   (spacemacs/toggle-absolute-line-numbers-on)
-  (spacemacs/toggle-aggressive-indent-globally-on)
   (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-menu-bar-on)
   (spacemacs/toggle-mode-line-battery-on)
-  (spacemacs/toggle-mode-line-org-clock-on)
   (spacemacs/toggle-mode-line-responsive-on)
   (spacemacs/toggle-mode-line-version-control-on)
   (spacemacs/toggle-smartparens-globally-on)
   (spacemacs/toggle-smooth-scrolling-on)
-  (spacemacs/toggle-spelling-checking-on)
-  (spacemacs/toggle-syntax-highlighting-on)
   (spacemacs/toggle-truncate-lines-on)
 
   ;; web-mode
   (setq-default
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-attr-value-indent-offset 2
+   web-mode-markup-indent-offset 4
+   web-mode-css-indent-offset 4
+   web-mode-code-indent-offset 4
+   web-mode-attr-value-indent-offset 4
    )
+
+
+  (setq-default lsp-clients--clangd-default-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clangd")
+  (setq-default lsp-clients-clangd-args '("--resource-dir=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0"
+                                          "--background-index"
+                                          "--compile-commands-dir=/Users/aksidionkreimben/Documents/Repository/cpptest/build"
+                                          "--completion-style=detailed"
+                                          "--cross-file-rename"
+                                          "--debug-origin"
+                                          "--function-arg-placeholders"
+                                          "--header-insertion=iwyu"
+                                          "--header-insertion-decorators"
+                                          "--limit-results=0"
+                                          "--sync"
+                                          "--suggest-missing-includes"
+                                          "--log=info"
+                                          "--offset-encoding=utf-8"
+                                          "--pretty"
+                                          ))
 
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -697,18 +646,18 @@ before packages are loaded.")
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(evil-want-Y-yank-to-eol nil)
-   '(package-selected-packages
-     '(lsp-treemacs treemacs cfrs pfuture posframe neotree wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra ivy-avy flyspell-correct-ivy counsel-projectile counsel-css counsel swiper cliphist ivy bui evil-mc zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts undo-tree underwater-theme ujelly-theme typit twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toxi-theme toc-org tide terminal-here tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon symbol-overlay sunny-day-theme sudoku sublime-themes subatomic256-theme subatomic-theme string-inflection string-edit sphinx-doc spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode rjsx-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin poetry planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el password-generator paradox pacmacs overseer organic-green-theme org-superstar open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme npm-mode nose nodejs-repl noctilux-theme naquadah-theme nameless mustang-theme multi-term multi-line monokai-theme monochrome-theme molokai-theme moe-theme modus-vivendi-theme modus-operandi-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-section madhat2r-theme macrostep lush-theme lsp-ui lsp-python-ms lsp-pyright lsp-origami lorem-ipsum livid-mode live-py-mode link-hint light-soap-theme kaolin-themes json-navigator js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide importmagic import-js impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helpful helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-ctest helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grip-mode grandshell-theme gotham-theme google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gist gh-md gandalf-theme fuzzy forge font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rtags flycheck-pos-tip flycheck-package flycheck-elsa flx-ido flatui-theme flatland-theme farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dracula-theme dotenv-mode doom-themes dockerfile-mode docker django-theme disaster dired-quick-sort diminish devdocs define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dap-mode dakrone-theme cython-mode cyberpunk-theme cpp-auto-include company-ycmd company-web company-rtags company-go company-emoji company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmake-mode clues-theme clean-aindent-mode chocolate-theme cherry-blossom-theme centered-cursor-mode ccls busybee-theme bubbleberry-theme browse-at-remote blacken birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme add-node-modules-path ace-link ace-jump-helm-line ac-ispell 2048-game)))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   '(cmake-ide levenshtein ycmd request-deferred rtags lsp-treemacs treemacs cfrs pfuture posframe neotree wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-rtags ivy-purpose ivy-hydra ivy-avy flyspell-correct-ivy counsel-projectile counsel-css counsel swiper cliphist ivy bui evil-mc zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts undo-tree underwater-theme ujelly-theme typit twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toxi-theme toc-org tide terminal-here tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon symbol-overlay sunny-day-theme sudoku sublime-themes subatomic256-theme subatomic-theme string-inflection string-edit sphinx-doc spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode rjsx-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin poetry planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el password-generator paradox pacmacs overseer organic-green-theme org-superstar open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme npm-mode nose nodejs-repl noctilux-theme naquadah-theme nameless mustang-theme multi-term multi-line monokai-theme monochrome-theme molokai-theme moe-theme modus-vivendi-theme modus-operandi-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-section madhat2r-theme macrostep lush-theme lsp-ui lsp-python-ms lsp-pyright lsp-origami lorem-ipsum livid-mode live-py-mode link-hint light-soap-theme kaolin-themes json-navigator js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide importmagic import-js impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helpful helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-ctest helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grip-mode grandshell-theme gotham-theme google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gist gh-md gandalf-theme fuzzy forge font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rtags flycheck-pos-tip flycheck-package flycheck-elsa flx-ido flatui-theme flatland-theme farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emr emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dracula-theme dotenv-mode doom-themes dockerfile-mode docker django-theme disaster dired-quick-sort diminish devdocs define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dap-mode dakrone-theme cython-mode cyberpunk-theme cpp-auto-include company-ycmd company-web company-rtags company-go company-emoji company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmake-mode clues-theme clean-aindent-mode chocolate-theme cherry-blossom-theme centered-cursor-mode ccls busybee-theme bubbleberry-theme browse-at-remote blacken birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme add-node-modules-path ace-link ace-jump-helm-line ac-ispell 2048-game)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
