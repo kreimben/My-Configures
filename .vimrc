@@ -46,10 +46,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic' " Grammar checker
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 call vundle#end() " required
 filetype plugin indent on " required
