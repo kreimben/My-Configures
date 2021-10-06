@@ -25,10 +25,7 @@ set visualbell "beep 대신에 visual bell 사용
 set wildmenu " 자동완성을 도와줌
 set backupcopy=yes " Overwrite the original backup file
 
-"colorscheme darkblue
-
 " For Vundle!!!!!
-
 set nocompatible " be iMproved, required
 filetype off " required
 
@@ -51,27 +48,3 @@ call vundle#end() " required
 filetype plugin indent on " required
 
 syntax on " 문법 하이라이트 킴
-
-" Settings for Asnycomplete.vim
-" Tab completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-" Force refresh completion
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-
-" Set NERDTree shortcuts
-" Open NERDTree
-nnoremap <S-Tab> :NERDTreeToggle<CR>
-" Find
-nnoremap <S-F> :NERDTreeFind<CR>
-
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * silent NERDTreeMirror
-
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
