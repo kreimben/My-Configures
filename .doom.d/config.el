@@ -26,9 +26,9 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-(setq doom-font (font-spec :family "D2Coding" :size 15)
-      doom-variable-pitch-font (font-spec :family "D2Coding" :size 15)
-      doom-big-font (font-spec :family "D2Coding" :size 24))
+(setq doom-font (font-spec :family "D2Coding" :size 24)
+      doom-variable-pitch-font (font-spec :family "D2Coding" :size 24)
+      doom-big-font (font-spec :family "D2Coding" :size 30))
 (after! doom-themes--colors
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -77,3 +77,5 @@
 (setq lsp-treemacs-sync-mode 1)
 (setq lsp-completion-show-detail t)
 (setq lsp-completion-show-kind t)
+
+(global-visual-line-mode t)

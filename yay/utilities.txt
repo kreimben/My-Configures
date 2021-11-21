@@ -23,5 +23,4 @@ wayland
 wget
 zsh
 nimf
-nimf-libhangul
 librime
