@@ -25,4 +25,6 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias n="sudo nnn"
+alias sn="sudo nnn"
+
+exec 'sudo uxplay'
