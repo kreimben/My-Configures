@@ -27,3 +27,4 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.
 
 alias sn="sudo nnn"
 alias bios="sudo systemctl reboot --firmware-setup"
+alias windows11="sudo grub-reboot 1 && reboot"
