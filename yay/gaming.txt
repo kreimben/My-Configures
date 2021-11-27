@@ -1,6 +1,0 @@
-steam
-dxvk
-vkd3d
-wine
-wine-gecko
-wine-mono

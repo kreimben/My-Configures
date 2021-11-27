@@ -2,3 +2,5 @@ nodejs
 npm
 python-pip
 rustup
+docker
+docker-compose

@@ -1,7 +1,5 @@
 alacritty
 blueman
-docker
-docker-compose
 efibootmgr
 emacs
 git
@@ -10,7 +8,6 @@ grub
 grub-customizer
 htop
 kdenlive
-nautilus
 neofetch
 net-tools
 networkmanager
@@ -24,3 +21,4 @@ wget
 zsh
 nimf
 librime
+microsoft-edge-beta-bin
