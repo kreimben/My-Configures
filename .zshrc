@@ -26,4 +26,4 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias sn="sudo nnn"
-
+alias bios="sudo systemctl reboot --firmware-setup"
