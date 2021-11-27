@@ -27,4 +27,3 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.
 
 alias sn="sudo nnn"
 
-exec 'sudo uxplay'
