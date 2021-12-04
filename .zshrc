@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export ZSH="/home/kreimben/.oh-my-zsh"
+export NNN_PLUG='L:launch;K:pskill;V:imgview'
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
