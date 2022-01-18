@@ -1,3 +1,8 @@
 [user]
 	name = Aksidion Kreimben
 	email = aksidion@kreimben.com
+	signingkey = 6AEA6A01AE4867C2323E041CDA6D8B2886AB873E
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
