@@ -26,6 +26,5 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias sn="sudo nnn"
 alias bios="sudo systemctl reboot --firmware-setup"
-alias windows11="sudo grub-reboot 1 && reboot"
+alias w="curl wttr.in/anseong"
