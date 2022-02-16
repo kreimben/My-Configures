@@ -1,6 +1,6 @@
 # GRUB boot loader configuration
 
-GRUB_DEFAULT="saved"
+GRUB_DEFAULT="Arch Linux"
 GRUB_TIMEOUT="3"
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=1"
@@ -52,7 +52,7 @@ export GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 # Uncomment to make GRUB remember the last selection. This requires
 # setting 'GRUB_DEFAULT=saved' above.
-GRUB_SAVEDEFAULT="true"
+GRUB_SAVEDEFAULT="false"
 
 # Uncomment to disable submenus in boot menu
 #GRUB_DISABLE_SUBMENU="y"
