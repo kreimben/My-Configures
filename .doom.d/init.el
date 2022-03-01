@@ -17,7 +17,7 @@
        ligatures         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
-       ;nav-flash         ; blink cursor line after big motions
+       nav-flash         ; blink cursor line after big motions
        ophints           ; highlight the region an operation acts on
        (popup +defaults)  ; tame sudden yet inevitable temporary windows
        tabs              ; a tab bar for Emacs
@@ -34,10 +34,9 @@
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        format            ; automated prettiness
-       ;multiple-cursors  ; editing in many places at once
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
-       ;word-wrap         ; soft wrapping with language-aware indent
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -62,52 +61,42 @@
        ;editorconfig      ; let someone else argue about tabs vs spaces
        ;ein               ; tame Jupyter notebooks with emacs
        ;(eval +overlay)     ; run code, run (also, repls)
-       ;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        lsp
        magit             ; a git porcelain for Emacs
-       ;make              ; run make tasks from Emacs
-       ;pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;terraform         ; infrastructure as code
-       ;upload            ; map local to remote projects via ssh/ftp
 
        :os
        ;(:if IS-MAC macos)  ; improve compatibility with macOS
        tty               ; improve the terminal Emacs experience
 
        :lang
-       (cc +lsp)              ; C > C++ == 1
-       ;;(csharp +lsp)           ; unity, .NET, and mono shenanigans
+       ;(cc +lsp)              ; C > C++ == 1
        (docker-langserver --stdio)
        emacs-lisp        ; drown in parentheses
-       (go +lsp)         ; the hipster dialect
+       ;(go +lsp)         ; the hipster dialect
        json              ; At least it ain't XML
        ;;(java +lsp) ; the poster child for carpal tunnel syndrome
+       ;;kotlin            ; a better, slicker Java(Script)
        (javascript        ; all(hope(abandon(ye(who(enter(here))))))
         +lsp
-        +eslint)
-       ;;kotlin            ; a better, slicker Java(Script)
+        +deno)
        markdown          ; writing docs for people to ignore
-       ;;ocaml             ; an objective camel
        org               ; organize your plain life in plain text
        (python
         +lsp
         +pyenv
         +poetry
         +pyright
-        )            ; beautiful is better than ugly
-       ;;qt                ; the 'cutest' gui framework ever
+       )            ; beautiful is better than ugly
        ;;rest              ; Emacs as a REST client
-       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust
         +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        sh                ; she sells {ba,z,fi}sh shells on the C xor
-       ;;(swift +lsp)            ; who asked for emoji variables?
        (web +lsp)               ; the tubes
        yaml              ; JSON, but readable
-       ;;zig               ; C, but simpler
 
        :email
 

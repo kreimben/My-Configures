@@ -1,1 +1,5 @@
+package https://github.com/jethrokuan/fzf
+package https://github.com/jhillyerd/plugin-git
 theme default
+theme fox
+theme ocean
