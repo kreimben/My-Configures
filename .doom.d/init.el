@@ -12,7 +12,7 @@
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;hydra
+                                        ;hydra
        indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
@@ -49,61 +49,77 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       ;syntax              ; tasing you for every semicolon you forget
+       syntax              ; tasing you for every semicolon you forget
        spell               ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make
 
        :tools
-       ;ansible
-       ;debugger          ; FIXME stepping through code, to help you add bugs
+                                        ;ansible
+       debugger          ; FIXME stepping through code, to help you add bugs
        direnv
-       ;docker
-       ;editorconfig      ; let someone else argue about tabs vs spaces
        ;ein               ; tame Jupyter notebooks with emacs
-       ;(eval +overlay)     ; run code, run (also, repls)
+
+       (eval +overlay)     ; run code, run (also, repls)
+
        lookup              ; navigate your code and its documentation
+
        lsp
+
        magit             ; a git porcelain for Emacs
+
        prodigy           ; FIXME managing external services & code builders
+
        rgb               ; creating color strings
-       ;terraform         ; infrastructure as code
+       terraform         ; infrastructure as code
 
        :os
-       ;(:if IS-MAC macos)  ; improve compatibility with macOS
        tty               ; improve the terminal Emacs experience
 
        :lang
-       ;(cc +lsp)              ; C > C++ == 1
+       ;;(cc +lsp)              ; C > C++ == 1
        (docker-langserver --stdio)
+
        emacs-lisp        ; drown in parentheses
-       ;(go +lsp)         ; the hipster dialect
+
+       ;;(go +lsp)         ; the hipster dialect
+
        json              ; At least it ain't XML
+
        ;;(java +lsp) ; the poster child for carpal tunnel syndrome
        ;;kotlin            ; a better, slicker Java(Script)
        (javascript        ; all(hope(abandon(ye(who(enter(here))))))
         +lsp
-        +deno)
+        )
+
        markdown          ; writing docs for people to ignore
+
        org               ; organize your plain life in plain text
+
        (python
         +lsp
         +pyenv
         +poetry
         +pyright
-       )            ; beautiful is better than ugly
+        )
        ;;rest              ; Emacs as a REST client
+       (nginx
+        +lsp)
+
        (rust
         +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+
        sh                ; she sells {ba,z,fi}sh shells on the C xor
-       (web +lsp)               ; the tubes
+
+       (web +lsp)        ; the tubes
+
        yaml              ; JSON, but readable
 
-       :email
-
        :app
-       ;calendar
-       ;everywhere        ; *leave* Emacs!? You must be joking
+                                        ;calendar
+                                        ;everywhere        ; *leave* Emacs!? You must be joking
 
        :config
        literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+
+       )
