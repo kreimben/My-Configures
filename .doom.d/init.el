@@ -3,7 +3,7 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ;;vertico           ; the search engine of the future
+       vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -12,7 +12,7 @@
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;;hydra
+       hydra
        indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
@@ -40,7 +40,7 @@
 
        :emacs
        dired             ; making dired pretty [functional]
-       ;;electric          ; smarter, keyword-based electric-indent
+       electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
@@ -56,10 +56,10 @@
        :tools
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
-       ;;direnv
+       direnv
        ;;ein               ; tame Jupyter notebooks with emacs
 
-       ;;(eval +overlay)     ; run code, run (also, repls)
+       (eval +overlay)     ; run code, run (also, repls)
 
        lookup              ; navigate your code and its documentation
 
@@ -67,7 +67,7 @@
 
        magit             ; a git porcelain for Emacs
 
-       ;;prodigy           ; FIXME managing external services & code builders
+       prodigy           ; FIXME managing external services & code builders
 
        rgb               ; creating color strings
        terraform         ; infrastructure as code
@@ -85,11 +85,9 @@
 
        json              ; At least it ain't XML
 
-       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       ;;kotlin            ; a better, slicker Java(Script)
        (javascript        ; all(hope(abandon(ye(who(enter(here))))))
-        +lsp
-        )
+       +lsp
+       )
 
        markdown          ; writing docs for people to ignore
 
@@ -100,13 +98,15 @@
         +pyenv
         +poetry
         +pyright
-        )
-       ;;rest              ; Emacs as a REST client
+       )
+
        (nginx
-        +lsp)
+        +lsp
+       )
 
        (rust
-        +lsp)
+        +lsp
+       )
 
        sh                ; she sells {ba,z,fi}sh shells on the C xor
 
@@ -116,7 +116,6 @@
 
        :app
        ;;calendar
-       ;;everywhere        ; *leave* Emacs!? You must be joking
 
        :config
        literate
