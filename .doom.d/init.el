@@ -3,16 +3,16 @@
 
        :completion
        company           ; the ultimate code completion backend
-       vertico           ; the search engine of the future
+       ;;vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-                                        ;hydra
+       ;;hydra
        indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
@@ -27,20 +27,20 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       zen               ; distraction-free coding or writing
+       ;;zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
-       fold              ; (nigh) universal code folding
+       ;;fold              ; (nigh) universal code folding
        format            ; automated prettiness
        rotate-text       ; cycle region at point between text candidates
-       snippets          ; my elves. They type so I don't have to
+       ;;snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired             ; making dired pretty [functional]
-       electric          ; smarter, keyword-based electric-indent
+       ;;electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
@@ -54,12 +54,12 @@
        grammar           ; tasing grammar mistake every you make
 
        :tools
-                                        ;ansible
-       debugger          ; FIXME stepping through code, to help you add bugs
-       direnv
-       ;ein               ; tame Jupyter notebooks with emacs
+       ;;ansible
+       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       ;;direnv
+       ;;ein               ; tame Jupyter notebooks with emacs
 
-       (eval +overlay)     ; run code, run (also, repls)
+       ;;(eval +overlay)     ; run code, run (also, repls)
 
        lookup              ; navigate your code and its documentation
 
@@ -67,7 +67,7 @@
 
        magit             ; a git porcelain for Emacs
 
-       prodigy           ; FIXME managing external services & code builders
+       ;;prodigy           ; FIXME managing external services & code builders
 
        rgb               ; creating color strings
        terraform         ; infrastructure as code
@@ -85,7 +85,7 @@
 
        json              ; At least it ain't XML
 
-       ;;(java +lsp) ; the poster child for carpal tunnel syndrome
+       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        ;;kotlin            ; a better, slicker Java(Script)
        (javascript        ; all(hope(abandon(ye(who(enter(here))))))
         +lsp
@@ -106,7 +106,7 @@
         +lsp)
 
        (rust
-        +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+        +lsp)
 
        sh                ; she sells {ba,z,fi}sh shells on the C xor
 
@@ -115,8 +115,8 @@
        yaml              ; JSON, but readable
 
        :app
-                                        ;calendar
-                                        ;everywhere        ; *leave* Emacs!? You must be joking
+       ;;calendar
+       ;;everywhere        ; *leave* Emacs!? You must be joking
 
        :config
        literate
