@@ -7,3 +7,5 @@ alias w="curl wttr.in/anseong"
 alias win="sudo grub-reboot 1 && sudo reboot now"
 alias vultr="ssh root@149.28.209.214"
 alias lh="ls -hal"
+
+export GPG_TTY=$(tty)
