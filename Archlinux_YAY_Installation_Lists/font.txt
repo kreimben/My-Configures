@@ -1,0 +1,9 @@
+adobe-source-han-sans-kr-fonts
+ttf-baekmuk
+ttf-dejavu
+ttf-liberation
+wqy-zenhei
+spoqa-han-sans
+ttf-d2coding
+ttf-nanum
+ttf-unfonts-core-ibx

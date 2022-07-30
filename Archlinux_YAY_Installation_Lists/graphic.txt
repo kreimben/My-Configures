@@ -1,0 +1,10 @@
+lib32-nvidia-utils
+libva-mesa-driver
+libva-utils
+libva-vdpau-driver
+libvdpau-va-gl
+mesa-vdpau
+nvidia
+nvidia-utils
+xorg-drivers
+xorg
