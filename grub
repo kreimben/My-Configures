@@ -57,4 +57,4 @@ GRUB_SAVEDEFAULT="false"
 #GRUB_DISABLE_SUBMENU="y"
 
 GRUB_DISABLE_OS_PROBER="false"
-GRUB_THEME="/boot/grub/themes/dark-matter/theme.txt"
+#GRUB_THEME="/boot/grub/themes/dark-matter/theme.txt"
