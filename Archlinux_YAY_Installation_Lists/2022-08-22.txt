@@ -47,13 +47,7 @@ hunspell-en_us
 iptables-nft
 kdenlive
 kdialog
-kube-apiserver
-kube-controller-manager
-kube-proxy
-kube-scheduler
-kubeadm
-kubectl
-kubelet
+lib32-nvidia-utils
 lib32-pipewire
 librime
 libtool
@@ -83,6 +77,7 @@ nss-mdns
 ntfs-3g
 nvidia
 nvidia-utils
+obsidian
 openbsd-netcat
 opencl-clhpp
 opencl-headers
@@ -103,6 +98,7 @@ ripgrep
 rustup
 sddm
 sed
+steam
 sudo
 system-config-printer
 telegram-desktop
