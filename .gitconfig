@@ -1,10 +1,17 @@
 [user]
-	name = Aksidion Kreimben
+	name = Jehwan Kim
 	email = aksidion@kreimben.com
-	signingkey = 6AEA6A01AE4867C2323E041CDA6D8B2886AB873E
+	signingkey = F7CDD13EA935BDEAFEB0CF5D7438B90463526278
 [commit]
 	gpgsign = true
 [gpg]
 	program = gpg
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

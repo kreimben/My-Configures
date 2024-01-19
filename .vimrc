@@ -25,26 +25,6 @@ set visualbell "beep 대신에 visual bell 사용
 set wildmenu " 자동완성을 도와줌
 set backupcopy=yes " Overwrite the original backup file
 
-" For Vundle!!!!!
-set nocompatible " be iMproved, required
-filetype off " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'taglist.vim'
-Plugin 'SrcExpl'
-Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic' " Grammar checker
-
-call vundle#end() " required
 filetype plugin indent on " required
 
 syntax on " 문법 하이라이트 킴
